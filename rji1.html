@@ -7,7 +7,70 @@
     <title>日记墙</title>
     <link href="css/iconfont.css" rel="stylesheet">
     <link href="css/bass.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
+	<link href="css/index.css" rel="stylesheet">
+	<style>
+		.main-end{
+            width: 60%;
+            height: 100%;
+            background: #fff;
+            position:absolute;
+            top:7%;
+            left:-60%;
+        }
+        .main-z{
+            width: 100%;
+            height: 100%;
+            background: url(images/asideBg.png);
+        }
+        .heiad{
+            margin: 0 auto;
+            width: 90%;
+            height: 3.55rem;
+            border-bottom: 0.05rem solid #9C9997;
+        }
+        .defa{
+            width: 1.625rem;
+            height: 1.625rem;
+            border-radius: 50%;
+            margin-top: 0.95rem;
+            float: left;
+        }
+        .heiad span{
+            display: inline-block;
+            font-size: 0.55rem;
+            margin-top: 1.5rem;
+            margin-left: 0.2rem;
+            
+        }
+        .hensp-ul{
+            width: 100%;
+            height: 65%;
+            padding-left: 1rem;
+            padding-top: 0.5rem;
+        }
+        .hensp-ul li{
+            width: 100%;
+            height: 1.6rem;
+            margin-bottom: 0.2rem;
+            margin-top: 1rem;
+        }
+        .hensp-ul li img{
+            width: 1.6rem;
+            height: 1.6rem;
+            float: left;
+            
+        }
+        .hensp-ul li span{
+            float: left;
+            margin: 0.02rem 0 0 0.2rem;
+            line-height: 1.6rem;
+		}
+		.index{
+            position: absolute;
+            top: 7%;
+            left: 7%;
+        }
+	</style>
 </head>
 <body>
 	<div>
@@ -22,36 +85,57 @@
 	</div>
 	<!-- 圈子 circle-->
 		<!-- circle-content -->
-		<ul class="circle-content">
-			<!-- <li class="tab_content show">
-				<div class="circleList-d">
-					<div class="circle-d-head">
-						<a href="#" class="commentUser">
-							<div class="user-img"><img src="images/ts1.jpg"></div>
-							<div class="user-name-d">
-								<span>安琪拉
-								</span><br>
-								<span class="issue-time">05-26&nbsp;17:00</span>
-							</div>
-						</a>
+		<div class="main">
+			<div class="main-end" id="2" name="">
+				<div class="main-z">
+					<div class="heiad">
+						<img src="images/personal_03.png" alt="" class="defa">
+						<span class="Name">iVipenluck</span>
 					</div>
-					<p class="circle-d-text">今天天气不错，适合出去郊游，在大树下沐浴阳光...</p>
-					日记墙图片
-					<ul class="circle-d-img">
-						<li><a href="javascript:;"><img src="images/xqs.jpg"></a></li>
-					</ul>
-					日记墙图片 end
+					<div class="hensp">
+						<ul class="hensp-ul">
+							<li><a href="#"><img src="images/icon1.png" alt=""><span>主页</span></a></li>
+							<li><a href="#"></a><img src="images/icon2.png" alt=""><span>日记墙</span></a></li>
+							<li><a href="#"></a><img src="images/icon3.png" alt=""><span>关于我们</span></a></li>
+							<li><a href="#"></a><img src="images/icon4.png" alt=""><span>我的信息</span></a></li>
+							<li><a href="#"></a><img src="images/icon5.png" alt=""><span>退出登录</span></a></li>
+						</ul>
+					</div>
 				</div>
-			</li> -->
-		</ul>
-	</div>
+			</div>
+			<div class="index">
+				<ul class="circle-content">
+				</ul>
+			</div>
+			
+		</div>
+		<script src="js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+
+
+			$('.return').click(function(){
+                if($(".main-end").attr('id')=='2'){
+                    $(".main-end").animate({left:"0"},function(){
+                        $(".main-end").attr('id','1')
+                    });
+                    $(".index").animate({left:"67%"});
+                }else{
+                    $(".main-end").animate({left:"-60%"},function(){
+                        $(".main-end").attr('id','2')
+                    });
+                    $(".index").animate({left:"7%"});
+                }
+			})
+			
+
+
 	  	$(".like-i").click(function(){
 		    $(".like-i").addClass("like-i-active");
 	  	});
-	});
+	}); 
+	if (localStorage.sjh!=undefined) {
 		$.ajax({
 			url:'mvc/index.php?c=Login&a=query',
 			type:'post',
@@ -59,7 +143,8 @@
 				shouji:localStorage.sjh,
 			},success:function(data){
 				var datas = JSON.parse(data)
-				console.log(datas)
+				$('.defa').attr('src',datas.data.img)
+				$('.Name').html(datas.data.name)
 				$(datas.message).each(function(I,Item){
 					var Html=`<li class="tab_content show">
 				 <div class="circleList-d">
@@ -88,6 +173,10 @@
 			
 			}
 		})
+    } else{
+    	alert('请登录');
+    	//window.window.location.href='index.html'
+    }
 	</script>
 </body>
 </html>
