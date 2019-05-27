@@ -1,0 +1,252 @@
+input[type=color], 
+input[type=date], 
+input[type=datetime-local], 
+input[type=datetime], 
+input[type=email], 
+input[type=month], 
+input[type=number], 
+input[type=password], 
+input[type=search], 
+input[type=tel], 
+input[type=text], 
+input[type=time], 
+input[type=url], 
+input[type=week], 
+select, 
+textarea {
+    width: 100%;
+    -webkit-appearance: none;
+    padding: .5rem 0;
+    margin-bottom: 15px;
+    line-height: 1.2rem;
+    -webkit-user-select: text;
+    background-color: #FDEEE7;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 3px;
+    outline: 0;
+}
+body{
+    font-size: .8rem;
+}
+/*img{ 
+    width: 100%; 
+}*/
+.btn{
+    padding: .4rem;
+    border-radius: 5px;
+    border: initial;
+    background-color: #FF8288;
+    color: #fff;
+    margin-right: 0px;
+    font-size: .75rem;
+}
+.cy-btn{
+    width: 100%;
+    line-height: 1.8rem;
+    background-color: #00cc00;
+}
+.btn-max{
+    display: inherit;
+    text-align: center;
+    line-height: 1.8rem;
+    font-size: .8rem;
+    margin-left: 12rem;
+}
+/* 我的圈子，朋友圈 circle */
+.circle{ margin-bottom: 2rem; }
+.circle-tab{  overflow: hidden;}
+.circle-tab li{
+    float: left;
+    width: 50%;
+    line-height: 40px;
+    text-align: center;
+    background-color: pink;
+    color: #929292;
+}
+.circle-tab li.pick{ 
+    background-color: #fff; 
+    color: #007aff; 
+    border-bottom: 1px solid #fff; 
+}
+.circleList-d{
+    /*border-bottom: 10px solid #f1f1f1;*/
+    /*padding: 10px;*/
+}
+.circle-d-head>a{ display: inline-block; }
+.circle-d-head>.commentUser span{line-height: inherit; position: relative;}
+.cir-iox{
+    line-height: normal;
+    display: table;
+    position: absolute;
+    top: 0;
+    right: -2.2rem;
+    font-size: .9rem;
+}
+a.circle-delete{ 
+    float: right; 
+    font-size: .9rem;
+    padding-top: 20px;
+    color: #929292;
+}
+.user-name-d{     
+    margin-top: .45rem;
+    width: 15rem;
+}
+.circle-d-btn,
+.circle-d-praise,
+.circle-d-comment{ margin: 5px 0; font-size: .65rem; }
+.circle-d-btn>span,
+.circle-d-praise>span a,
+.circle-d-comment p>span{ color: #007aff;}
+.circle-d-btn>span i{ color: #929292; margin-right: 5px; border: none;}
+.circle-d-btn i{
+    margin-right: 10px;
+    padding: 4px 8px;
+    border: 1px solid #f1f1f1;
+    border-radius: 4px;
+    color: #929292;
+}
+.circle-d-btn .like-i-active{
+    transition: all .5s ease;
+    border: 1px solid #007aff;
+    background-color: #007aff;
+    color: #fff;
+}
+.circle-d-img li{
+    max-width: 100px;
+    max-height: 200px;
+    overflow: hidden;
+    float: left;
+}
+.circle-content{
+    /*width: 400px;*/
+    height: 210px;
+  /*  border: 1px solid pink*/
+  /*background:#FDEEE7;
+  border-radius: 3px;*/
+}
+.circle-d-img img{
+        width: 5rem;
+        height: 5rem;
+        border:0.05rem solid pink;
+        float: left;
+        box-sizing:border-box; 
+        -webkit-box-sizing:border-box;
+        margin-top: 0.25rem;
+        margin-left: 0.25rem;
+}
+.circle-d-imgLot li{
+    width: 4rem;
+    height: 4rem;
+    overflow: hidden;
+    float: left;
+    margin-right: 2.65%;
+    margin-bottom: .4rem;
+}
+.circle-d-imgLot li a img{
+    height: 4rem;
+}
+.circle-d-imgLot li:nth-child(4),
+.circle-d-imgLot li:nth-child(8) {
+    margin-right: 0;
+}
+/* 发布圈子 c-Publish*/
+.c-Publish{ 
+    padding-top:.5rem;    
+    /*border-bottom: 1px solid #f1f1f1;*/
+    /*background-color: pink;*/
+}
+.c-Publish .Pu-text,
+.c-Publish .Pu-img{ padding: 0 .5rem;}
+.c-Publish .Pu-text textarea{ 
+    padding: 0;
+    margin-bottom: .5rem;
+    border: 0;
+}
+.c-Publish .Pu-img a{
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    overflow: hidden;
+    float: left;
+    margin-right: 2.65%;
+    margin-bottom: .4rem;
+}
+.c-Publish .Pu-img a>img{ height: 4rem; }
+.c-Publish .Pu-img a:nth-child(4),
+.c-Publish .Pu-img a:nth-child(8) {
+    margin-right: 0;
+}
+.c-Publish .Pu-img a.Pu-Add-img{
+    position: relative;
+    text-align: center;
+    margin-right: 0;
+}
+.c-Publish .Pu-img a.Pu-Add-img input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.c-Publish .Pu-img{
+    margin: .5rem 0 1rem;
+    overflow: hidden;
+}
+.browseLike a.like-i{ color: #999;}
+.browseLike a.like-i-active{ color: red;}
+.comment-btn{
+    line-height: .1rem;
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+    top: 1.2rem;
+    color: #fff;
+    display: inherit;
+    font-size: 2rem;
+    margin-left: 17rem;
+}
+.assDt-foot{ margin-bottom: 3rem; }
+.assDt-foot p.assDt-foot-head{
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 10px;
+}
+.user-img img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.commentUser .user-img{
+    float: left;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: .4rem;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.commentUser span{ line-height: 3.3rem; position: relative; }
+span.issue-time{ font-size: .6rem; color: #999; }
+.commentUser span .i-grade,
+.commentUser span .i-sex{ 
+    color: #60abff;    
+    margin-left: 5px; 
+}
+.commentUser span .i-grade{
+    color: red;
+}
+.commentUser span .i-grade.icon-vip0{
+    color: #ccc;
+}
+.commentUser span .i-sexGirl{
+    color: #FF7BB5;
+}
+.commentText{margin-left: 3.3rem;}
+.commentText p{ padding: 5px;}
+.commentText p.bUserText{
+    background-color: #f1f1f1;
+    font-size: .75rem; 
+}
+.commentText p.bUserText span{
+    color: #60abff;
+}

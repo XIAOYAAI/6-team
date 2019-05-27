@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://www.17sucai.com/preview/177065/2016-06-15/Mzu/circle.html -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <title>日记墙</title>
+    <link href="css/../iconfont.css" rel="stylesheet">
+    <link href="css/../bass.css" rel="stylesheet">
+    <link href="css/../index.css" rel="stylesheet">
+</head>
+<body>
+	<div>
+		<header>
+			<div class="header">
+				<h1>日记墙</h1>
+				<a href="#" class="return">三</a>
+				<a href="relerse.html" class="comment-btn">+</a>
+			</div>
+		</header>	
+		<div style="height: 2.5rem;"></div>
+	</div>
+	<!-- 圈子 circle-->
+		<!-- circle-content -->
+		<ul class="circle-content">
+			<!-- <li class="tab_content show">
+				<div class="circleList-d">
+					<div class="circle-d-head">
+						<a href="#" class="commentUser">
+							<div class="user-img"><img src="images/ts1.jpg"></div>
+							<div class="user-name-d">
+								<span>安琪拉
+								</span><br>
+								<span class="issue-time">05-26&nbsp;17:00</span>
+							</div>
+						</a>
+					</div>
+					<p class="circle-d-text">今天天气不错，适合出去郊游，在大树下沐浴阳光...</p>
+					日记墙图片
+					<ul class="circle-d-img">
+						<li><a href="javascript:;"><img src="images/xqs.jpg"></a></li>
+					</ul>
+					日记墙图片 end
+				</div>
+			</li> -->
+		</ul>
+	</div>
+	<script type="text/javascript" src="../js/zepto.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+	  	$(".like-i").click(function(){
+		    $(".like-i").addClass("like-i-active");
+	  	});
+	});
+		$.ajax({
+			url:'../mvc/index.php?c=Login&a=query',
+			type:'post',
+			data:{
+				shouji:'13212312312',
+			},success:function(data){
+				var datas = JSON.parse(data)
+				var Html=`<li class="tab_content show">
+				<div class="circleList-d">
+					<div class="circle-d-head">
+						<a href="#" class="commentUser">
+							<div class="user-img"><img src="${datas.data.img}"></div>
+							<div class="user-name-d">
+								<span>${datas.data.name}
+								</span><br>
+								<span class="issue-time">05-26&nbsp;17:00</span>
+							</div>
+						</a>
+					</div>
+					<p class="circle-d-text">${datas.message.neirong}</p>
+					日记墙图片
+					<ul class="circle-d-img">`
+					     var imgurl = datas.message.img.split('-')
+					   $(imgurl).each(function(i,item){
+					   	  Html+=`<li><a href="javascript:;"><img src="${item}"></a></li>`
+					   });
+					Html+=`</ul>
+					日记墙图片
+				</div>
+			</li>`
+			$('.circle-content').html(Html)
+			}
+		})
+	</script>
+</body>
+</html>
