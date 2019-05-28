@@ -105,7 +105,6 @@ $(function(){
                         $('.no').hide()
                     }
                     if($('.no').hide()&&$('.nums').val()==c){
-                        
                         alert('登录成功')
                         // $('#phone').val('')
                         $('.nums').val('')
