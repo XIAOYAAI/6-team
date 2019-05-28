@@ -132,6 +132,10 @@ a.circle-delete{
         margin-top: 0.25rem;
         margin-left: 0.25rem;
 }
+.user-img img{
+  width: 2.5rem;
+  height: 2.5rem;
+}
 .circle-d-imgLot li{
     width: 4rem;
     height: 4rem;

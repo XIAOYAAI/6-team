@@ -70,10 +70,13 @@
             top: 7%;
             left: 7%;
         }
+<<<<<<< HEAD
         .user-img  img{
         	width: 2.5rem;
         	height: 2.5rem;
         }
+=======
+>>>>>>> 9fdde84af70fa7ab293fdee304f036d243cdd337
 	</style>
 </head>
 <body>
@@ -117,6 +120,11 @@
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 9fdde84af70fa7ab293fdee304f036d243cdd337
 			$('.return').click(function(){
                 if($(".main-end").attr('id')=='2'){
                     $(".main-end").animate({left:"0"},function(){
@@ -131,6 +139,7 @@
                 }
 			})
 			
+<<<<<<< HEAD
 	  	$(".like-i").click(function(){
 		    $(".like-i").addClass("like-i-active");
 	  	});
@@ -138,17 +147,32 @@
 $(function(){
 	if (localStorage.sjh!=undefined) {
 	    $.ajax({
+=======
+
+
+	  	$(".like-i").click(function(){
+		    $(".like-i").addClass("like-i-active");
+	  	});
+	}); 
+	if (localStorage.sjh!=undefined) {
+		$.ajax({
+>>>>>>> 9fdde84af70fa7ab293fdee304f036d243cdd337
 			url:'mvc/index.php?c=Login&a=query',
 			type:'post',
 			data:{
 				shouji:localStorage.sjh,
 			},success:function(data){
 				var datas = JSON.parse(data)
+<<<<<<< HEAD
 				console.log(datas.data)
                 //修改登陆的信息
                 $('.defa').attr('src',datas.data.img)
                 $('.Name').html(datas.data.name)
                 //渲染
+=======
+				$('.defa').attr('src',datas.data.img)
+				$('.Name').html(datas.data.name)
+>>>>>>> 9fdde84af70fa7ab293fdee304f036d243cdd337
 				$(datas.message).each(function(I,Item){
 					var Html=`<li class="tab_content show">
 				 <div class="circleList-d">
@@ -177,12 +201,19 @@ $(function(){
 			
 			}
 		})
+<<<<<<< HEAD
 	}else{
 		alert('请登录');
 		//window.location.href='index.html';
 	}
 })
 		
+=======
+    } else{
+    	alert('请登录');
+    	//window.window.location.href='index.html'
+    }
+>>>>>>> 9fdde84af70fa7ab293fdee304f036d243cdd337
 	</script>
 </body>
 </html>
