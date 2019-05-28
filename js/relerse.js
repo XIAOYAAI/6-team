@@ -14,6 +14,7 @@ $('#nei').on('click',function(){
 	$(this).html('')
 })
 $('.btn').on('click',function(){
+  if (localStorage.sjh!=undefined) {
     var time = new Date();
     imgStr= imgStr.join('-');
      console.log(imgStr)
@@ -35,6 +36,10 @@ $('.btn').on('click',function(){
         };
       }
    })
+  }else{
+    alert('请先登录');
+    //window.location.href = 'index.html'
+  }
 })
 var formatDateTime = function (date) {  
                 var y = date.getFullYear();  
