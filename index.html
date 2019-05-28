@@ -187,7 +187,11 @@
     </div>
     <script>
         $(document).ready(function(){
-
+            if(localStorage.sjh==undefined||localStorage.sjh==''){
+                alert('请登录')
+                // window.location.href='?';
+                return;
+            }
             $('.header-img').click(function(){
                 if($(".main-end").attr('id')=='2'){
                     $(".main-end").animate({left:"0"},function(){
@@ -226,8 +230,8 @@
                     type:'post',
                     data:{
                         shouji:localStorage.sjh,
-                        name:'哈哈',
-                        neirong:'dsadadsad',
+                        name:'新用户',
+                        neirong:' ',
                         img:'./images/default.png'
                     },
                     success:function(data){

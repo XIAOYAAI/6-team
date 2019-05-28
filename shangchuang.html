@@ -82,6 +82,11 @@
     </div>
     <script>
         $(document).ready(function(){
+            if(localStorage.sjh==undefined||localStorage.sjh==''){
+                alert('请登录')
+                // window.location.href='?';
+                return;
+            }
             var imgStr = "";
             $("#myUpload").upload({
                 uploadPath:'php/upload.php', 
@@ -112,7 +117,8 @@
                     success:function(data){
                         console.log(data)
                         if (data==1) {
-                            alert('修改成功')
+                            alert('修改成功');
+                            localStorage.sjh=$('.phone').val();
                             window.location.href='index.html';
                         }
                     }
