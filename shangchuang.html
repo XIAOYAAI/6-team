@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/m-common.css">
+    <script src="js/rem.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/myUpload.js"></script>
+    <style>
+        .header{
+            width: 100%;
+            height: 10%;
+            background-color: #fe8388;
+        }
+        .header .header-nav{
+            padding: 1.25rem 0.5rem 0 0.5rem;
+            height: 0.75rem;
+        }
+        .header-span{
+            line-height: 0.75rem;
+            color: aliceblue;
+            display: inline-block;
+            margin-left: 4.5rem;
+            width: 3.125rem;
+            height:0.75rem;
+            font-size: 0.75rem;
+        }
+        .main{
+            width: 100%;
+            height: 90%;
+            background-color: #fdf0e7;
+            position: relative;
+        }
+        .content img{
+            width: 4.625rem;
+            height: 4.625rem;
+            border-radius: 50%;
+        }
+        #myUpload{
+            padding: 1.625rem 35%;
+        }
+        input{
+            width: 12.125rem;
+            height: 2.375rem;
+            border-radius: 0.25rem;
+            border: none;
+            padding: 0 1rem;
+            font-size: 0.75rem;
+        }
+        .main p{
+            padding-left: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        textarea{
+            width: 12.125rem;
+            height: 4rem; 
+            border-radius: 0.25rem;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+        }
+        .btn{
+            margin-left: 0.85rem;
+            background-color:#fe8388; 
+        }
+        .index{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .main-end{
+            width: 60%;
+            height: 100%;
+            background: #fff;
+            position:absolute;
+            top:0;
+            left:-60%;
+        }
+        .main-z{
+            width: 100%;
+            height: 100%;
+            background: url(images/asideBg.png);
+        }
+        .heiad{
+            margin: 0 auto;
+            width: 90%;
+            height: 3.55rem;
+            border-bottom: 0.05rem solid #9C9997;
+        }
+        .defa{
+            width: 1.625rem;
+            height: 1.625rem;
+            border-radius: 50%;
+            margin-top: 0.95rem;
+            float: left;
+        }
+        .heiad span{
+            display: inline-block;
+            font-size: 0.55rem;
+            margin-top: 1.5rem;
+            margin-left: 0.2rem;
+            
+        }
+        .hensp-ul{
+            width: 100%;
+            height: 65%;
+            padding-left: 1rem;
+            padding-top: 0.5rem;
+        }
+        .hensp-ul li{
+            width: 100%;
+            height: 1.6rem;
+            margin-bottom: 0.2rem;
+            margin-top: 1rem;
+        }
+        .hensp-ul li img{
+            width: 1.6rem;
+            height: 1.6rem;
+            float: left;
+            
+        }
+        .hensp-ul li span{
+            float: left;
+            margin: 0.02rem 0 0 0.2rem;
+            line-height: 1.6rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-nav">
+            <img class="header-img" src="images/sy_yincang.png">
+            <span class="header-span">个人资料</span>
+        </div>
+    </div>
+    <div class="main">
+        <div class="main-end" id="2" name="">
+            <div class="main-z">
+                <div class="heiad">
+                    <img src="images/default.png" alt="" class="defa">
+                    <span>iVipenluck</span>
+                </div>
+                <div class="hensp">
+                    <ul class="hensp-ul">
+                        <li><a href="main.html"><img src="images/icon1.png" alt=""><span>主页</span></a></li>
+                        <li><a href="rji2.html"><img src="images/icon2.png" alt=""><span>日记墙</span></a></li>
+                        <li><a href="#"><img src="images/icon3.png" alt=""><span>关于我们</span></a></li>
+                        <li><a href="shangchuang.html"><img src="images/icon4.png" alt=""><span>我的信息</span></a></li>
+                        <li class="del"><a href="#"><img src="images/icon5.png" alt=""><span>退出登录</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="index">
+            <div id="myUpload"></div>
+            <p><input type="text" class="name" placeholder="请输入您的名字"></p>
+            <p><input type="text" class="phone" placeholder="请输入您的手机号"></p>
+            <p><textarea class="cont" placeholder="想对他（她）暗恋对象的爱的表白"></textarea></p>
+            <p><input type="button" class="btn" value="保存"></p>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('.header-img').click(function(){
+                if($(".main-end").attr('id')=='2'){
+                    $(".main-end").animate({left:"0"},function(){
+                        $(".main-end").attr('id','1')
+                    });
+                    $(".index").animate({left:"60%"});
+                }else{
+                    $(".main-end").animate({left:"-60%"},function(){
+                        $(".main-end").attr('id','2')
+                    });
+                    $(".index").animate({left:"0"});
+                }
+            })
+        // 滑动
+        var touch = new Touch(document.getElementsByTagName("html"),80).init();
+        //向左滑动触发事件
+        // var powerOrIncome =this.state.detailsType;
+        // let that =this;
+            touch.swipeLeft = function (dom) {
+                // alert('左');
+                $(".main-end").animate({left:"-60%"},function(){
+                        $(".main-end").attr('id','2')
+                    });
+                $(".index").animate({left:"0"});
+           //在这添加你的响应事件
+            };
+            //向右滑动事件
+            touch.swipeRight = function (dom) {
+                // alert('右');
+                $(".main-end").stop().animate({left:"0"},function(){
+                        $(".main-end").attr('id','1')
+                    });
+                $(".index").stop().animate({left:"60%"});
+              //在这添加你的响应事件
+            };
+        function Touch(dom,range) {
+            this.init = function () {
+                var that = this;
+                for(var i = 0; i<dom.length; i++){
+                    (function (dom) {
+                        function touchstart(event) {
+                            var e = event || window.event;
+                            if(e.targetTouches.length === 1){
+                                var startX = e.targetTouches[0].clientX,
+                                    startY = e.targetTouches[0].clientY;
+                                function touchmove(e) {
+                                    var moveEndX = e.targetTouches[0].clientX,
+                                        moveEndY = e.targetTouches[0].clientY;
+                                    if((that.getAngle(startX,startY,moveEndX,moveEndY) >= 135 || that.getAngle(startX,startY,moveEndX,moveEndY) <= -135) && that.getRange(startX,startY,moveEndX,moveEndY) >= range){
+                                        that.swipeLeft(dom);
+                                        dom.removeEventListener("touchmove",touchmove);
+                                    }else if((that.getAngle(startX,startY,moveEndX,moveEndY) >= -45 && that.getAngle(startX,startY,moveEndX,moveEndY) <= 45)&& that.getRange(startX,startY,moveEndX,moveEndY) >= range){
+                                        that.swipeRight(dom);
+                                        dom.removeEventListener("touchmove",touchmove);
+                                    }
+                                }
+ 
+                                function touchend() {
+                                    dom.removeEventListener("touchend",touchend);
+                                    dom.removeEventListener("touchmove",touchmove);
+                                }
+ 
+                                dom.addEventListener("touchmove",touchmove);
+                                dom.addEventListener("touchend",touchend);
+                            }
+                        }
+ 
+                        dom.addEventListener("touchstart",touchstart);
+                    })(dom[i]);
+                }
+ 
+                return this;
+            };
+ 
+            //计算滑动的角度
+            this.getAngle = function (px1, py1, px2, py2) {
+                //两点的x、y值
+                var x = px2-px1;
+                var y = py2-py1;
+               var  hypotenuse = Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2));
+                //斜边长度
+               var  cos = x/hypotenuse;
+                var radian = Math.acos(cos);
+                //求出弧度
+               var  angle = 180/(Math.PI/radian);
+                //用弧度算出角度
+                if (y<0) {
+                   var  angle = -angle;
+                } else if ((y == 0) && (x<0)) {
+                    angle = 180;
+                }
+                return angle;
+            };
+            //计算两点之间的距离
+            this.getRange = function (px1,py1,px2,py2) {
+                return Math.sqrt(Math.pow(Math.abs(px1 - px2), 2) + Math.pow(Math.abs(py1 - py2), 2));
+            };
+            this.swipeLeft = function (dom) {};
+            this.swipeRight = function (dom) {}
+        }
+        
+        /*if(localStorage.sjh==undefined||localStorage.sjh==''){
+                alert('请登录')
+                // window.location.href='?';
+                return;
+            }*/
+            var imgStr = "";
+            $("#myUpload").upload({
+                uploadPath:'php/upload.php', 
+                isMulti:true,
+                width:'4rem',
+                height:'4rem',
+                callback:function(msg){
+                    console.log(1)
+                    imgStr=msg;
+                    console.log(imgStr)
+                    $('.content img').attr('src',imgStr)
+                }
+            });
+            $('.content img').attr('src','./images/personal_03.png')
+            // console.log(localStorage.id)
+            
+            $('.btn').click(function(){
+                console.log($('.cont').val())
+                $.ajax({
+                    url:'mvc/index.php?c=Login&a=update',
+                    type:'post',
+                    data:{
+                        id:localStorage.id,
+                        shouji:$('.phone').val(),
+                        name:$('.name').val(),
+                        neirong:$('.cont').val(),
+                        img:$('.content img').attr('src'),
+                    },
+                    success:function(data){
+                        console.log(data)
+                        if (data==1) {
+                            alert('修改成功');
+                            localStorage.sjh=$('.phone').val();
+                            window.location.href='main.html';
+                        }
+                    }
+                })
+            })
+            $('.del').click(function(){
+                localStorage.clear();
+                // window.location.href=' ?';
+            })
+
+        function xr(){
+            $.ajax({
+                url:'mvc/index.php?c=Login&a=sousuo',
+                type:'post',
+                data:{
+                    shouji:localStorage.sjh,
+                },
+                success:function(data){
+
+                    console.log(data)
+                    var str=JSON.parse(data);
+                    console.log(str)
+                    $.each(str.data,function(i,item){
+                        console.log(item);
+                        $('.content img').attr('src',item.img)
+                        $('.name').val(item.name);
+                        $('.phone').val(item.shouji);
+                        $('.cont').val(item.neirong);
+                        $('.heiad img').attr('src',item.img)
+                        $('.heiad span').html(item.name)
+                        localStorage.id=item.ID;
+                    })
+                }
+            })    
+        }
+          xr()
+
+
+
+
+
+        })
+    </script>
+</body>
+</html>
