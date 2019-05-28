@@ -10,6 +10,9 @@
     <link href="css/bass.css" rel="stylesheet">
 	<link href="css/index.css" rel="stylesheet">
 	<style>
+    body{
+        overflow-x:hidden;
+    }
 		.main-end{
             width: 60%;
             height: 100%;
@@ -99,10 +102,10 @@
 					</div>
 					<div class="hensp">
 						<ul class="hensp-ul">
-							<li><a href="#"><img src="images/icon1.png" alt=""><span>主页</span></a></li>
+							<li><a href="main.html"><img src="images/icon1.png" alt=""><span>主页</span></a></li>
 							<li><a href="#"></a><img src="images/icon2.png" alt=""><span>日记墙</span></a></li>
 							<li><a href="#"></a><img src="images/icon3.png" alt=""><span>关于我们</span></a></li>
-							<li><a href="#"></a><img src="images/icon4.png" alt=""><span>我的信息</span></a></li>
+							<li><a href="shangchuang.html"><img src="images/icon4.png" alt=""><span>我的信息</span></a></li>
 							<li><a href="#"></a><img src="images/icon5.png" alt=""><span>退出登录</span></a></li>
 						</ul>
 					</div>
@@ -114,26 +117,31 @@
 			</div>
 			
 		</div>
-		<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script type="text/javascript">
-
-	// 滑动
+// 滑动
  
-            var touch = new Touch(document.getElementsByTagName("html"),80).init();
+var touch = new Touch(document.getElementsByTagName("html"),80).init();
  
-            //向左滑动触发事件
+//向左滑动触发事件
    
         // var powerOrIncome =this.state.detailsType;
         // let that =this;
             touch.swipeLeft = function (dom) {
-                alert('左');
+            $(".main-end").animate({left:"-60%"},function(){
+                $(".main-end").attr('id','2')
+            });
+              $(".index").animate({left:"7%"});
            //在这添加你的响应事件
             };
  
             //向右滑动事件
             touch.swipeRight = function (dom) {
-                alert('右');
+            $(".main-end").animate({left:"0"},function(){
+                $(".main-end").attr('id','1')
+            });
+            $(".index").animate({left:"67%"});
               //在这添加你的响应事件
             };
  
@@ -227,19 +235,22 @@
 		    $(".like-i").addClass("like-i-active");
 	  	});
 	});
+
 $(function(){
+    console.log(localStorage.sjh)
 	if (localStorage.sjh!=undefined) {
+        console.log(localStorage.sjh)
 	    $.ajax({
 			url:'mvc/index.php?c=Login&a=query',
 			type:'post',
 			data:{
 				shouji:localStorage.sjh,
 			},success:function(data){
+                
 				var datas = JSON.parse(data)
-				console.log(datas.data)
-                //修改登陆的信息
-                $('.defa').attr('src',datas.data.img)
-                $('.Name').html(datas.data.name)
+  //修改登陆的信息
+     $('.defa').attr('src',datas.data.img)
+     $('.Name').html(datas.data.name)
                 //渲染
 				$(datas.message).each(function(I,Item){
 					var Html=`<li class="tab_content show">
@@ -263,7 +274,7 @@ $(function(){
 					Html+=`</ul>
 				</div>
 			    </li>`
-                $('.circle-content').append(Html)
+           $('.circle-content').append(Html)
 				})
 				
 			
@@ -271,9 +282,10 @@ $(function(){
 		})
 	}else{
 		alert('请登录');
-		//window.location.href='index.html';
+		window.location.href='index.html';
 	}
-})
+})    
+        
 		
 	</script>
 </body>

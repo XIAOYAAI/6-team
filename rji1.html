@@ -3,7 +3,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no"> -->
+     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
     <title>日记墙</title>
     <link href="css/iconfont.css" rel="stylesheet">
     <link href="css/bass.css" rel="stylesheet">
@@ -70,13 +71,10 @@
             top: 7%;
             left: 7%;
         }
-<<<<<<< HEAD
         .user-img  img{
         	width: 2.5rem;
         	height: 2.5rem;
         }
-=======
->>>>>>> 9fdde84af70fa7ab293fdee304f036d243cdd337
 	</style>
 </head>
 <body>
@@ -116,15 +114,100 @@
 			</div>
 			
 		</div>
-		<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/zepto.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function(){
-<<<<<<< HEAD
-=======
+// 滑动
+ 
+var touch = new Touch(document.getElementsByTagName("html"),80).init();
+ 
+//向左滑动触发事件
+   
+        // var powerOrIncome =this.state.detailsType;
+        // let that =this;
+            touch.swipeLeft = function (dom) {
+                alert('左');
+           //在这添加你的响应事件
+            };
+ 
+            //向右滑动事件
+            touch.swipeRight = function (dom) {
+                alert('右');
+              //在这添加你的响应事件
+            };
+ 
+ 
+        function Touch(dom,range) {
+            this.init = function () {
+                var that = this;
+                for(var i = 0; i<dom.length; i++){
+                    (function (dom) {
+                        function touchstart(event) {
+                            var e = event || window.event;
+                            if(e.targetTouches.length === 1){
+                                var startX = e.targetTouches[0].clientX,
+                                    startY = e.targetTouches[0].clientY;
+                                function touchmove(e) {
+                                    var moveEndX = e.targetTouches[0].clientX,
+                                        moveEndY = e.targetTouches[0].clientY;
+                                    if((that.getAngle(startX,startY,moveEndX,moveEndY) >= 135 || that.getAngle(startX,startY,moveEndX,moveEndY) <= -135) && that.getRange(startX,startY,moveEndX,moveEndY) >= range){
+                                        that.swipeLeft(dom);
+                                        dom.removeEventListener("touchmove",touchmove);
+                                    }else if((that.getAngle(startX,startY,moveEndX,moveEndY) >= -45 && that.getAngle(startX,startY,moveEndX,moveEndY) <= 45)&& that.getRange(startX,startY,moveEndX,moveEndY) >= range){
+                                        that.swipeRight(dom);
+                                        dom.removeEventListener("touchmove",touchmove);
+                                    }
+                                }
+ 
+                                function touchend() {
+                                    dom.removeEventListener("touchend",touchend);
+                                    dom.removeEventListener("touchmove",touchmove);
+                                }
+ 
+                                dom.addEventListener("touchmove",touchmove);
+                                dom.addEventListener("touchend",touchend);
+                            }
+                        }
+ 
+                        dom.addEventListener("touchstart",touchstart);
+                    })(dom[i]);
+                }
+ 
+                return this;
+            };
+ 
+            //计算滑动的角度
+            this.getAngle = function (px1, py1, px2, py2) {
+                //两点的x、y值
+                var x = px2-px1;
+                var y = py2-py1;
+               var  hypotenuse = Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2));
+                //斜边长度
+               var  cos = x/hypotenuse;
+                var radian = Math.acos(cos);
+                //求出弧度
+               var  angle = 180/(Math.PI/radian);
+                //用弧度算出角度
+                if (y<0) {
+                   var  angle = -angle;
+                } else if ((y == 0) && (x<0)) {
+                    angle = 180;
+                }
+                return angle;
+            };
+            //计算两点之间的距离
+            this.getRange = function (px1,py1,px2,py2) {
+                return Math.sqrt(Math.pow(Math.abs(px1 - px2), 2) + Math.pow(Math.abs(py1 - py2), 2));
+            };
+            this.swipeLeft = function (dom) {};
+            this.swipeRight = function (dom) {}
+        }
 
 
->>>>>>> 9fdde84af70fa7ab293fdee304f036d243cdd337
+
+
+
+		/*$(document).ready(function(){
 			$('.return').click(function(){
                 if($(".main-end").attr('id')=='2'){
                     $(".main-end").animate({left:"0"},function(){
@@ -139,7 +222,6 @@
                 }
 			})
 			
-<<<<<<< HEAD
 	  	$(".like-i").click(function(){
 		    $(".like-i").addClass("like-i-active");
 	  	});
@@ -147,32 +229,17 @@
 $(function(){
 	if (localStorage.sjh!=undefined) {
 	    $.ajax({
-=======
-
-
-	  	$(".like-i").click(function(){
-		    $(".like-i").addClass("like-i-active");
-	  	});
-	}); 
-	if (localStorage.sjh!=undefined) {
-		$.ajax({
->>>>>>> 9fdde84af70fa7ab293fdee304f036d243cdd337
 			url:'mvc/index.php?c=Login&a=query',
 			type:'post',
 			data:{
 				shouji:localStorage.sjh,
 			},success:function(data){
 				var datas = JSON.parse(data)
-<<<<<<< HEAD
 				console.log(datas.data)
                 //修改登陆的信息
                 $('.defa').attr('src',datas.data.img)
                 $('.Name').html(datas.data.name)
                 //渲染
-=======
-				$('.defa').attr('src',datas.data.img)
-				$('.Name').html(datas.data.name)
->>>>>>> 9fdde84af70fa7ab293fdee304f036d243cdd337
 				$(datas.message).each(function(I,Item){
 					var Html=`<li class="tab_content show">
 				 <div class="circleList-d">
@@ -201,19 +268,12 @@ $(function(){
 			
 			}
 		})
-<<<<<<< HEAD
 	}else{
 		alert('请登录');
 		//window.location.href='index.html';
 	}
-})
+})*/
 		
-=======
-    } else{
-    	alert('请登录');
-    	//window.window.location.href='index.html'
-    }
->>>>>>> 9fdde84af70fa7ab293fdee304f036d243cdd337
 	</script>
 </body>
 </html>

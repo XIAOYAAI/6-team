@@ -15,7 +15,8 @@ $('#nei').on('click',function(){
 })
 $('.btn').on('click',function(){
   if (localStorage.sjh!=undefined) {
-    var time = new Date();
+  if ($('#nei').html()=='') {
+      var time = new Date();
     imgStr= imgStr.join('-');
      console.log(imgStr)
     console.log('chenggong')
@@ -32,13 +33,16 @@ $('.btn').on('click',function(){
         console.log(datas)
         if (datas.code=='200') {
             alert('发布成功')
-            window.location.href='rji1.html'
+            window.location.href='rji2.html'
         };
       }
    })
   }else{
+    alert('内容不能为空')
+  }
+  }else{
     alert('请先登录');
-    //window.location.href = 'index.html'
+    window.location.href = 'index.html'
   }
 })
 var formatDateTime = function (date) {  
