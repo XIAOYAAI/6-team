@@ -6,11 +6,12 @@ var imgStr = [];
         width:'2.7rem',
         height:'2.7rem',
         callback:function(data){
+            console.log('ceshi')
+            console.log(data)
             imgStr.push(data)
         }
 });
 $('#nei').on('click',function(){
-	console.log('duan')
 	$(this).html('')
 })
 $('.btn').on('click',function(){
