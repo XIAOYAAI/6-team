@@ -64,6 +64,8 @@ $(function(){
         return
     }else{
         $('.no').hide()
+        $('.butt').removeAttr('disabled')
+         return
     }
     // console.log(1)
 })

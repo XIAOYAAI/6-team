@@ -7,6 +7,7 @@ var imgStr = [];
         height:'2.7rem',
         callback:function(data){
             imgStr.push(data)
+            console.log(data)
         }
 });
 $('#nei').on('click',function(){

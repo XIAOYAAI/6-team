@@ -97,8 +97,8 @@
 			<div class="main-end" id="2" name="">
 				<div class="main-z">
 					<div class="heiad">
-						<img src="images/personal_03.png" alt="" class="defa">
-						<span class="Name">iVipenluck</span>
+						<img src="images/default.png" alt="" class="defa">
+						<span class="Name">新用户</span>
 					</div>
 					<div class="hensp">
 						<ul class="hensp-ul">
@@ -106,7 +106,7 @@
 							<li><a href="#"></a><img src="images/icon2.png" alt=""><span>日记墙</span></a></li>
 							<li><a href="#"></a><img src="images/icon3.png" alt=""><span>关于我们</span></a></li>
 							<li><a href="shangchuang.html"><img src="images/icon4.png" alt=""><span>我的信息</span></a></li>
-							<li><a href="#"></a><img src="images/icon5.png" alt=""><span>退出登录</span></a></li>
+							<li><a href="index.html"><img src="images/icon5.png" alt=""><span>退出登录</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -248,6 +248,7 @@ $(function(){
 			},success:function(data){
                 
 				var datas = JSON.parse(data)
+                console.log(datas)
   //修改登陆的信息
      $('.defa').attr('src',datas.data.img)
      $('.Name').html(datas.data.name)

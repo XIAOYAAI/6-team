@@ -29,11 +29,7 @@ class LoginController{
         //$old_data = current($old_data);//current()函数返回数组中的当前元素的值。
         $old_data1 = M()->query_sql("SELECT * FROM data WHERE shouji='{$shouji}'");
         $old_data1 = current($old_data1);
-       /* $arr =[];
-        while(i<=$old_data1){
-            $arr[i]->$old_data1 = current($old_data1);
-        };*/
-        if (!empty($old_data)) {//empty()函数用于检查一个变量是否为空。
+        if (empty($old_data)) {//empty()函数用于检查一个变量是否为空。
             echo ajax_return('505',$old_data,$old_data1);
             exit;   
         }else{
@@ -43,7 +39,7 @@ class LoginController{
     }
     
 
- /*
+     /*
      * 插入方法
      */
     public function register(){
