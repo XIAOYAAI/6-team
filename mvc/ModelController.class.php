@@ -1,6 +1,6 @@
 <?php
 class ModelController{
-    private $dsn="mysql:host=localhost;dbname=weibo";
+    private $dsn="mysql:host=localhost;dbname=6-team-demo";
     private $username="root";
     private $password="root";
     public static $pdo;
@@ -70,7 +70,7 @@ class ModelController{
     /*
      * update方法
      */
-    public function update($table,$data,$hh,$id){
+    public function update($table,$data,$id){
         try{
 //          Array
 //          (
@@ -86,7 +86,7 @@ class ModelController{
             //p($sql).die;
             self::$pdo->query("SET NAMES UTF8");
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-            $result=self::$pdo->exec("UPDATE {$table} SET $sql WHERE {$hh}={$id}");
+            $result=self::$pdo->exec("UPDATE {$table} SET $sql WHERE ID={$id}");
             return $result;
         }catch (Exception $e){
             die($e->getMessage());

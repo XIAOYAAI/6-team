@@ -154,11 +154,11 @@
                 </div>
                 <div class="hensp">
                     <ul class="hensp-ul">
-                        <li><a href="#"><img src="images/icon1.png" alt=""><span>主页</span></a></li>
-                        <li><a href="#"></a><img src="images/icon2.png" alt=""><span>日记墙</span></a></li>
-                        <li><a href="#"></a><img src="images/icon3.png" alt=""><span>关于我们</span></a></li>
-                        <li><a href="#"></a><img src="images/icon4.png" alt=""><span>我的信息</span></a></li>
-                        <li><a href="#"></a><img src="images/icon5.png" alt=""><span>退出登录</span></a></li>
+                        <li><a href="main.html"><img src="images/icon1.png" alt=""><span>主页</span></a></li>
+                        <li><a href="rji2.html"><img src="images/icon2.png" alt=""><span>日记墙</span></a></li>
+                        <li><a href="#"><img src="images/icon3.png" alt=""><span>关于我们</span></a></li>
+                        <li><a href="shangchuang.html"><img src="images/icon4.png" alt=""><span>我的信息</span></a></li>
+                        <li class="del"><a href="#"><img src="images/icon5.png" alt=""><span>退出登录</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -187,11 +187,7 @@
     </div>
     <script>
         $(document).ready(function(){
-            if(localStorage.sjh==undefined||localStorage.sjh==''){
-                alert('请登录')
-                // window.location.href='?';
-                return;
-            }
+             console.log(localStorage.sjh)
             $('.header-img').click(function(){
                 if($(".main-end").attr('id')=='2'){
                     $(".main-end").animate({left:"0"},function(){
@@ -205,21 +201,127 @@
                     $(".index").animate({left:"7%"});
                 }
             })
+
+
+
+            // 滑动
+        var touch = new Touch(document.getElementsByTagName("html"),80).init();
+        //向左滑动触发事件
+        // var powerOrIncome =this.state.detailsType;
+        // let that =this;
+            touch.swipeLeft = function (dom) {
+                // alert('左');
+                $(".main-end").animate({left:"-60%"},function(){
+                        $(".main-end").attr('id','2')
+                    });
+                $(".index").animate({left:"7%"});
+           //在这添加你的响应事件
+            };
+            //向右滑动事件
+            touch.swipeRight = function (dom) {
+                // alert('右');
+                $(".main-end").stop().animate({left:"0"},function(){
+                        $(".main-end").attr('id','1')
+                    });
+                $(".index").stop().animate({left:"67%"});
+              //在这添加你的响应事件
+            };
+        function Touch(dom,range) {
+            this.init = function () {
+                var that = this;
+                for(var i = 0; i<dom.length; i++){
+                    (function (dom) {
+                        function touchstart(event) {
+                            var e = event || window.event;
+                            if(e.targetTouches.length === 1){
+                                var startX = e.targetTouches[0].clientX,
+                                    startY = e.targetTouches[0].clientY;
+                                function touchmove(e) {
+                                    var moveEndX = e.targetTouches[0].clientX,
+                                        moveEndY = e.targetTouches[0].clientY;
+                                    if((that.getAngle(startX,startY,moveEndX,moveEndY) >= 135 || that.getAngle(startX,startY,moveEndX,moveEndY) <= -135) && that.getRange(startX,startY,moveEndX,moveEndY) >= range){
+                                        that.swipeLeft(dom);
+                                        dom.removeEventListener("touchmove",touchmove);
+                                    }else if((that.getAngle(startX,startY,moveEndX,moveEndY) >= -45 && that.getAngle(startX,startY,moveEndX,moveEndY) <= 45)&& that.getRange(startX,startY,moveEndX,moveEndY) >= range){
+                                        that.swipeRight(dom);
+                                        dom.removeEventListener("touchmove",touchmove);
+                                    }
+                                }
+ 
+                                function touchend() {
+                                    dom.removeEventListener("touchend",touchend);
+                                    dom.removeEventListener("touchmove",touchmove);
+                                }
+ 
+                                dom.addEventListener("touchmove",touchmove);
+                                dom.addEventListener("touchend",touchend);
+                            }
+                        }
+ 
+                        dom.addEventListener("touchstart",touchstart);
+                    })(dom[i]);
+                }
+ 
+                return this;
+            };
+ 
+            //计算滑动的角度
+            this.getAngle = function (px1, py1, px2, py2) {
+                //两点的x、y值
+                var x = px2-px1;
+                var y = py2-py1;
+               var  hypotenuse = Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2));
+                //斜边长度
+               var  cos = x/hypotenuse;
+                var radian = Math.acos(cos);
+                //求出弧度
+               var  angle = 180/(Math.PI/radian);
+                //用弧度算出角度
+                if (y<0) {
+                   var  angle = -angle;
+                } else if ((y == 0) && (x<0)) {
+                    angle = 180;
+                }
+                return angle;
+            };
+            //计算两点之间的距离
+            this.getRange = function (px1,py1,px2,py2) {
+                return Math.sqrt(Math.pow(Math.abs(px1 - px2), 2) + Math.pow(Math.abs(py1 - py2), 2));
+            };
+            this.swipeLeft = function (dom) {};
+            this.swipeRight = function (dom) {}
+        }
+            
+
+
+
+            console.log(localStorage.sjh)
+            // localStorage.sjh='15735943454'
+            if(localStorage.sjh==undefined||localStorage.sjh==''){
+                alert('请登录')
+                // window.location.href='?';
+                return;
+            }
+                var sjh=localStorage.sjh
+                console.log(sjh)
             $.ajax({
-                url:'mvc/index.php?c=Login&a=query',
+                url:'mvc/index.php?c=Login&a=querysj',
                 type:'post',
                 data:{
                     shouji:localStorage.sjh,
                 },
                 success:function(data){
+                    console.log(sjh)
                     console.log(data);
                     if(data==''){
                         $(".main-end").attr('name','1')
                         ajax()
+                        xr()
                     }else{
                         var str=JSON.parse(data)
                         console.log(str)
                         $(".main-end").attr('name',str.code)
+                        xr()
                     }
                 }
             })
@@ -235,6 +337,7 @@
                         img:'./images/default.png'
                     },
                     success:function(data){
+                        console.log(data)
                         var str=JSON.parse(data);
                         console.log(str)
                         if (str.code=='200') {
@@ -243,8 +346,9 @@
                     }
                 })
             }
+        function xr(){
             $.ajax({
-                url:'mvc/index.php?c=Login&a=cjsousuo',
+                url:'mvc/index.php?c=Login&a=sousuo',
                 type:'post',
                 data:{
                     shouji:localStorage.sjh,
@@ -261,6 +365,12 @@
                     })
                 }
             })    
+        }
+            
+            $('.del').click(function(){
+                localStorage.clear();
+                // window.location.href=' ?';
+            })
 
 
 
