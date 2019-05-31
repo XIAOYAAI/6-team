@@ -57,7 +57,7 @@
 
 
 $(function(){
-    $('#phone').blur(function(){
+    $('.phone').on('keyup','#phone',function(){
     var reg = /^1([38]\d|5[0-35-9]|7[3678])\d{8}$/;
     if(!reg.test($('.number').val())){ 
          $('.no').show()

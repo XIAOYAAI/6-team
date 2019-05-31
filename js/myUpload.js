@@ -61,7 +61,7 @@
 
 			var uploadButton = $('<div class="table" role="myupload-file-input-btn">' +
             		'<div class="content table-cell" style="' + contentStyle + '">' +
-                	'<img src="./images/add.png"/>' +
+                	'<img src="/images/add.png"/>' +
             		'</div>' +
         			'</div>');
 			if(initValue.length > 0 && !isMulti) {//如果有初始值并且是单图模式则隐藏上传按钮

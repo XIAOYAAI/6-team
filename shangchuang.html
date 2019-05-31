@@ -286,7 +286,7 @@
             // console.log(localStorage.id)
             
             $('.btn').click(function(){
-                console.log($('.cont').val())
+                // console.log($('.cont').val())
                 $.ajax({
                     url:'mvc/index.php?c=Login&a=update',
                     type:'post',
@@ -298,7 +298,7 @@
                         img:$('.content img').attr('src'),
                     },
                     success:function(data){
-                        console.log(data)
+                        // console.log(data)
                         if (data==1) {
                             alert('修改成功');
                             localStorage.sjh=$('.phone').val();
@@ -309,7 +309,7 @@
             })
             $('.del').click(function(){
                 localStorage.clear();
-                // window.location.href=' ?';
+                window.location.href='index.html';
             })
 
         function xr(){

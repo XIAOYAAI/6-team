@@ -13,7 +13,7 @@ if($fs){
     $path = './images/'.time() . rand(1, 999999) . '.' . $fileend;
     $rs = move_uploaded_file($fs["tmp_name"], WEB_ROOT . $path);
 
-    if ($rs) {
+    if ($rs){
         echo json_encode(array('result'=>true,'path'=>$path));
     }else{
     	echo json_encode(array('result'=>false,'errormsg'=>'系统错误'));

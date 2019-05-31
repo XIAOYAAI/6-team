@@ -268,10 +268,14 @@ $(function(){
 					</div>
 					<p class="circle-d-text">${Item.neirong}</p>
 					<ul class="circle-d-img">`
-					     var imgurl = Item.img.split('-')
-					   $(imgurl).each(function(i,item){
-					   	  Html+=`<li><a href="javascript:;"><img src="${item}"></a></li>`
+                    if(Item.img!=''){
+                        var imgurl = Item.img.split('-')
+                       $(imgurl).each(function(i,item){
+                          Html+=`<li><a href="javascript:;"><img src="${item}"></a></li>`
+                    
+					     
 					   });
+                    }
 					Html+=`</ul>
 				</div>
 			    </li>`
